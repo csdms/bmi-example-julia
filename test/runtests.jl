@@ -2,6 +2,7 @@ import BasicModelInterface as BMI
 using Heat
 using Test
 using TOML
+import Aqua
 
 @testset "Heat" begin
 
@@ -59,5 +60,7 @@ using TOML
         @test z0 !== z1
         @test z0 == z1
     end
+
+    Aqua.test_all(Heat)
 
 end  # testset "Heat"
