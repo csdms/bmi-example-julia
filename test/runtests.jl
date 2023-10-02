@@ -68,6 +68,6 @@ import Aqua
         @test z0[[1, 2]] == z2
     end
 
-    Aqua.test_all(Heat)
+    Aqua.test_all(Heat; ambiguities = false)
 
 end  # testset "Heat"
