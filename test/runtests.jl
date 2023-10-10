@@ -9,6 +9,8 @@ import Aqua
     @testset "initialize from defaults" begin
         m = BMI.initialize(Heat.Model)
         z0 = BMI.get_value_ptr(m, "plate_surface__temperature")
+        @test ndims(z0) == 1
+        @test z0 == vec(m.temperature)
         @test all(z0 .>= 0)
         @test all(z0 .< 1)
     end

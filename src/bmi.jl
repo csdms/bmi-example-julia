@@ -38,7 +38,7 @@ BMI.get_var_grid(m::Model, name) = hasvar(name) && 0
 BMI.get_grid_rank(m::Model, grid) = hasgrid(grid) && ndims(m.temperature)
 BMI.get_grid_size(m::Model, grid) = hasgrid(grid) && length(m.temperature)
 
-BMI.get_value_ptr(m::Model, name) = hasvar(name) && m.temperature
+BMI.get_value_ptr(m::Model, name) = hasvar(name) && vec(m.temperature)
 
 function BMI.get_value(m::Model, name, dest)
     val = BMI.get_value_ptr(m, name)
