@@ -5,7 +5,10 @@ const varname = "plate_surface__temperature"
 BMI.initialize(::Type{Model}) = Model()
 BMI.initialize(::Type{Model}, x) = Model(x)
 
-BMI.update(m::Model) = advance_in_time!(m)
+function BMI.update(m::Model)
+    advance_in_time!(m)
+    return nothing
+end
 
 function BMI.update_until(m::Model, t)
     time_step = BMI.get_time_step(m)
@@ -21,12 +24,16 @@ function BMI.update_until(m::Model, t)
     if fractional_step > 0
         advance_in_time!(m, fractional_step)
     end
+
+    return nothing
 end
 
 hasvar(name) = name == varname || throw(KeyError(name))
 hasgrid(grid) = grid == 0 || throw(KeyError(grid))
 
-BMI.finalize(m::Model) = m
+function BMI.finalize(m::Model)
+    return nothing
+end
 
 BMI.get_var_type(m::Model, name) = hasvar(name) && repr(eltype(m.temperature))
 BMI.get_var_units(m::Model, name) = hasvar(name) && "K"
