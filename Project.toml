@@ -16,6 +16,7 @@ BasicModelInterface = "0.1"
 DSP = "0.7"
 Random = "1"
 Statistics = "1"
+TOML = "1"
 Test = "1"
 julia = "1.10"
 
